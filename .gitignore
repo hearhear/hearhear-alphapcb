@@ -12,3 +12,16 @@
 *.b#?
 *.s#?
 *.pro
+
+# Gerbers
+*.GBL
+*.GBO
+*.GBS
+*.GML
+*.GTL
+*.GTO
+*.GTP
+*.GTS
+*.TXT
+*.dri
+*.gpi
