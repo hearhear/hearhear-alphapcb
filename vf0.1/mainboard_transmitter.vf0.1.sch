@@ -1958,25 +1958,14 @@ For boards designed to be plugged directly into a USB slot. If possible, ensure 
 <hole x="-3.1" y="4.25" drill="2.1336"/>
 <hole x="-3.1" y="-4.25" drill="2.1336"/>
 </package>
-<package name="U.FL">
-<wire x1="1.3" y1="0.7" x2="1.3" y2="2" width="0.127" layer="21"/>
-<wire x1="1.3" y1="2" x2="-1.3" y2="2" width="0.127" layer="21"/>
-<wire x1="-1.3" y1="-2" x2="1.3" y2="-2" width="0.127" layer="21"/>
-<wire x1="1.3" y1="-2" x2="1.3" y2="-0.7" width="0.127" layer="21"/>
-<wire x1="-1.3" y1="0.7" x2="-1.3" y2="2" width="0.127" layer="21"/>
-<wire x1="-1.3" y1="-2" x2="-1.3" y2="-0.7" width="0.127" layer="21"/>
-<wire x1="1.4" y1="0.7" x2="1.4" y2="2" width="0.127" layer="21"/>
-<wire x1="1.4" y1="-2" x2="1.4" y2="-0.7" width="0.127" layer="21"/>
-<wire x1="1.5" y1="0.7" x2="1.5" y2="2" width="0.127" layer="21"/>
-<wire x1="1.5" y1="-2" x2="1.5" y2="-0.7" width="0.127" layer="21"/>
-<wire x1="1.5" y1="2" x2="1.3" y2="2" width="0.127" layer="21"/>
-<wire x1="1.5" y1="0.7" x2="1.3" y2="0.7" width="0.127" layer="21"/>
-<wire x1="1.5" y1="-0.7" x2="1.3" y2="-0.7" width="0.127" layer="21"/>
-<wire x1="1.5" y1="-2" x2="1.3" y2="-2" width="0.127" layer="21"/>
-<smd name="P$1" x="0" y="1.375" dx="2.2" dy="0.85" layer="1"/>
-<smd name="P$2" x="0" y="-1.375" dx="2.2" dy="0.85" layer="1"/>
-<smd name="P$3" x="1.525" y="0" dx="1.05" dy="1" layer="1"/>
-<smd name="P$4" x="-1.525" y="0" dx="1.05" dy="1" layer="1"/>
+<package name="SMA-EDGE">
+<description>&lt;b&gt;SMA Antenna Connector&lt;/b&gt;&lt;p&gt;
+This is a footprint for an edge mount RF antenna. Works pretty well with SMA type connectors but may also work with other edge mount RF connectors. Keep in mind, these edge mount connectors assume you are using a 0.062" PCB thickness.</description>
+<smd name="GND@0" x="0" y="0" dx="1.524" dy="4.064" layer="1" cream="no"/>
+<smd name="SIG" x="2.54" y="0" dx="1.524" dy="4.064" layer="1" cream="no"/>
+<smd name="GND@1" x="5.08" y="0" dx="1.524" dy="4.064" layer="1" cream="no"/>
+<smd name="GND@2" x="0" y="0" dx="1.524" dy="4.064" layer="16"/>
+<smd name="GND@3" x="5.08" y="0" dx="1.524" dy="4.064" layer="16"/>
 </package>
 </packages>
 <symbols>
@@ -2036,14 +2025,15 @@ For boards designed to be plugged directly into a USB slot. If possible, ensure 
 <text x="-4.826" y="1.016" size="0.6096" layer="94">OPEN WHEN</text>
 <text x="-4.826" y="0.254" size="0.6096" layer="94">CONNECTED</text>
 </symbol>
-<symbol name="U.FL">
-<wire x1="0" y1="-2.54" x2="0" y2="-7.62" width="0.254" layer="94"/>
+<symbol name="SMA_EDGE">
+<wire x1="0" y1="-2.54" x2="0" y2="-12.7" width="0.254" layer="94"/>
 <circle x="0" y="0" radius="1.1359" width="0.254" layer="94"/>
 <circle x="0" y="0" radius="2.54" width="0.254" layer="94"/>
 <pin name="GND@0" x="-2.54" y="-5.08" visible="off" length="short"/>
 <pin name="SIGNAL" x="5.08" y="0" visible="off" length="middle" rot="R180"/>
 <pin name="GND@1" x="-2.54" y="-7.62" visible="off" length="short"/>
-<text x="-3.81" y="4.064" size="1.778" layer="95">&gt;NAME</text>
+<pin name="GND@2" x="-2.54" y="-10.16" visible="off" length="short"/>
+<pin name="GND@3" x="-2.54" y="-12.7" visible="off" length="short"/>
 </symbol>
 </symbols>
 <devicesets>
@@ -2475,23 +2465,23 @@ Standard 11-pin 0.1" header. Use with straight break away headers (SKU : PRT-001
 </device>
 </devices>
 </deviceset>
-<deviceset name="U.FL" prefix="J" uservalue="yes">
-<description>SMD antenna connector- WRL-09144</description>
+<deviceset name="SMA_EDGE" prefix="J$">
+<description>&lt;b&gt;SMA Antenna Connector&lt;/b&gt;
+End launch SMA connector. The paste layer has been removed so that the connector can be hand soldered onto the board after reflow.</description>
 <gates>
-<gate name="G$1" symbol="U.FL" x="0" y="0"/>
+<gate name="1" symbol="SMA_EDGE" x="-2.54" y="7.62"/>
 </gates>
 <devices>
-<device name="" package="U.FL">
+<device name="" package="SMA-EDGE">
 <connects>
-<connect gate="G$1" pin="GND@0" pad="P$1"/>
-<connect gate="G$1" pin="GND@1" pad="P$2"/>
-<connect gate="G$1" pin="SIGNAL" pad="P$3"/>
+<connect gate="1" pin="GND@0" pad="GND@0"/>
+<connect gate="1" pin="GND@1" pad="GND@1"/>
+<connect gate="1" pin="GND@2" pad="GND@2"/>
+<connect gate="1" pin="GND@3" pad="GND@3"/>
+<connect gate="1" pin="SIGNAL" pad="SIG"/>
 </connects>
 <technologies>
-<technology name="">
-<attribute name="PROD_ID" value="CONN-09193"/>
-<attribute name="VALUE" value="U.FL"/>
-</technology>
+<technology name=""/>
 </technologies>
 </device>
 </devices>
@@ -3889,7 +3879,6 @@ You are welcome to use this library for commercial purposes. For attribution, we
 <part name="L" library="SparkFun-Connectors" deviceset="RCA" device=""/>
 <part name="R" library="SparkFun-Connectors" deviceset="RCA" device=""/>
 <part name="GND6" library="SparkFun-Aesthetics" deviceset="GND" device=""/>
-<part name="J2" library="SparkFun-Connectors" deviceset="U.FL" device="" value="U.FL"/>
 <part name="GND8" library="SparkFun-Aesthetics" deviceset="GND" device=""/>
 <part name="U$2" library="SparkFun-RF" deviceset="RF-LINK_TX" device=""/>
 <part name="GND5" library="SparkFun-Aesthetics" deviceset="GND" device=""/>
@@ -3900,6 +3889,10 @@ You are welcome to use this library for commercial purposes. For attribution, we
 <part name="SUPPLY4" library="SparkFun-Aesthetics" deviceset="VCC" device=""/>
 <part name="C4" library="SparkFun-Capacitors" deviceset="CAP" device="PTH" value="1uF"/>
 <part name="GND9" library="SparkFun-Aesthetics" deviceset="GND" device=""/>
+<part name="SUPPLY5" library="SparkFun-Aesthetics" deviceset="VCC" device=""/>
+<part name="SUPPLY6" library="SparkFun-Aesthetics" deviceset="VCC" device=""/>
+<part name="SUPPLY7" library="SparkFun-Aesthetics" deviceset="VCC" device=""/>
+<part name="J$1" library="SparkFun-Connectors" deviceset="SMA_EDGE" device=""/>
 </parts>
 <sheets>
 <sheet>
@@ -3938,7 +3931,6 @@ You are welcome to use this library for commercial purposes. For attribution, we
 <instance part="L" gate="G$1" x="152.4" y="63.5"/>
 <instance part="R" gate="G$1" x="152.4" y="48.26"/>
 <instance part="GND6" gate="1" x="162.56" y="30.48"/>
-<instance part="J2" gate="G$1" x="124.46" y="119.38" rot="R180"/>
 <instance part="GND8" gate="1" x="132.08" y="116.84"/>
 <instance part="U$2" gate="G$1" x="104.14" y="116.84"/>
 <instance part="GND5" gate="1" x="93.98" y="96.52"/>
@@ -3949,6 +3941,10 @@ You are welcome to use this library for commercial purposes. For attribution, we
 <instance part="SUPPLY4" gate="G$1" x="12.7" y="104.14"/>
 <instance part="C4" gate="G$1" x="-15.24" y="78.74"/>
 <instance part="GND9" gate="1" x="-15.24" y="68.58"/>
+<instance part="SUPPLY5" gate="G$1" x="-20.32" y="58.42"/>
+<instance part="SUPPLY6" gate="G$1" x="-15.24" y="88.9"/>
+<instance part="SUPPLY7" gate="G$1" x="17.78" y="68.58"/>
+<instance part="J$1" gate="1" x="124.46" y="119.38" rot="R180"/>
 </instances>
 <busses>
 </busses>
@@ -4011,14 +4007,22 @@ You are welcome to use this library for commercial purposes. For attribution, we
 <pinref part="GND6" gate="1" pin="GND"/>
 </segment>
 <segment>
-<pinref part="J2" gate="G$1" pin="GND@1"/>
 <pinref part="GND8" gate="1" pin="GND"/>
 <wire x1="127" y1="127" x2="132.08" y2="127" width="0.1524" layer="91"/>
 <wire x1="132.08" y1="127" x2="132.08" y2="124.46" width="0.1524" layer="91"/>
-<pinref part="J2" gate="G$1" pin="GND@0"/>
 <wire x1="132.08" y1="124.46" x2="132.08" y2="119.38" width="0.1524" layer="91"/>
 <wire x1="127" y1="124.46" x2="132.08" y2="124.46" width="0.1524" layer="91"/>
 <junction x="132.08" y="124.46"/>
+<pinref part="J$1" gate="1" pin="GND@0"/>
+<pinref part="J$1" gate="1" pin="GND@1"/>
+<pinref part="J$1" gate="1" pin="GND@3"/>
+<wire x1="127" y1="132.08" x2="132.08" y2="132.08" width="0.1524" layer="91"/>
+<wire x1="132.08" y1="132.08" x2="132.08" y2="129.54" width="0.1524" layer="91"/>
+<junction x="132.08" y="127"/>
+<pinref part="J$1" gate="1" pin="GND@2"/>
+<wire x1="132.08" y1="129.54" x2="132.08" y2="127" width="0.1524" layer="91"/>
+<wire x1="127" y1="129.54" x2="132.08" y2="129.54" width="0.1524" layer="91"/>
+<junction x="132.08" y="129.54"/>
 </segment>
 <segment>
 <pinref part="U$2" gate="G$1" pin="GND"/>
@@ -4066,29 +4070,6 @@ You are welcome to use this library for commercial purposes. For attribution, we
 <wire x1="15.24" y1="50.8" x2="20.32" y2="55.88" width="0.1524" layer="91"/>
 <wire x1="20.32" y1="55.88" x2="22.86" y2="55.88" width="0.1524" layer="91"/>
 <pinref part="U$1" gate="G$1" pin="D+"/>
-</segment>
-</net>
-<net name="UVCC" class="0">
-<segment>
-<pinref part="JP1" gate="G$1" pin="VBUS"/>
-<wire x1="-27.94" y1="55.88" x2="-20.32" y2="55.88" width="0.1524" layer="91"/>
-<wire x1="-20.32" y1="55.88" x2="-17.78" y2="58.42" width="0.1524" layer="91"/>
-<wire x1="-17.78" y1="58.42" x2="-12.7" y2="58.42" width="0.1524" layer="91"/>
-<label x="-17.78" y="58.42" size="1.778" layer="95"/>
-</segment>
-<segment>
-<pinref part="U$1" gate="G$1" pin="UVCC"/>
-<pinref part="U$1" gate="G$1" pin="VBUS"/>
-<wire x1="22.86" y1="66.04" x2="22.86" y2="63.5" width="0.1524" layer="91"/>
-<wire x1="22.86" y1="66.04" x2="17.78" y2="66.04" width="0.1524" layer="91"/>
-<junction x="22.86" y="66.04"/>
-<label x="15.24" y="66.04" size="1.778" layer="95"/>
-</segment>
-<segment>
-<pinref part="C4" gate="G$1" pin="1"/>
-<wire x1="-15.24" y1="83.82" x2="-15.24" y2="88.9" width="0.1524" layer="91"/>
-<wire x1="-15.24" y1="88.9" x2="-25.4" y2="88.9" width="0.1524" layer="91"/>
-<label x="-25.4" y="88.9" size="1.778" layer="95"/>
 </segment>
 </net>
 <net name="N$5" class="0">
@@ -4146,9 +4127,9 @@ You are welcome to use this library for commercial purposes. For attribution, we
 </net>
 <net name="N$9" class="0">
 <segment>
-<pinref part="J2" gate="G$1" pin="SIGNAL"/>
 <pinref part="U$2" gate="G$1" pin="ANT"/>
 <wire x1="119.38" y1="119.38" x2="114.3" y2="119.38" width="0.1524" layer="91"/>
+<pinref part="J$1" gate="1" pin="SIGNAL"/>
 </segment>
 </net>
 <net name="VCC" class="0">
@@ -4189,6 +4170,26 @@ You are welcome to use this library for commercial purposes. For attribution, we
 <segment>
 <pinref part="R3" gate="G$1" pin="2"/>
 <pinref part="SUPPLY4" gate="G$1" pin="VCC"/>
+</segment>
+<segment>
+<pinref part="JP1" gate="G$1" pin="VBUS"/>
+<wire x1="-27.94" y1="55.88" x2="-20.32" y2="55.88" width="0.1524" layer="91"/>
+<wire x1="-20.32" y1="55.88" x2="-20.32" y2="58.42" width="0.1524" layer="91"/>
+<pinref part="SUPPLY5" gate="G$1" pin="VCC"/>
+</segment>
+<segment>
+<pinref part="C4" gate="G$1" pin="1"/>
+<wire x1="-15.24" y1="83.82" x2="-15.24" y2="88.9" width="0.1524" layer="91"/>
+<pinref part="SUPPLY6" gate="G$1" pin="VCC"/>
+</segment>
+<segment>
+<pinref part="U$1" gate="G$1" pin="UVCC"/>
+<pinref part="U$1" gate="G$1" pin="VBUS"/>
+<wire x1="22.86" y1="66.04" x2="22.86" y2="63.5" width="0.1524" layer="91"/>
+<wire x1="22.86" y1="66.04" x2="17.78" y2="66.04" width="0.1524" layer="91"/>
+<wire x1="17.78" y1="66.04" x2="17.78" y2="68.58" width="0.1524" layer="91"/>
+<junction x="22.86" y="66.04"/>
+<pinref part="SUPPLY7" gate="G$1" pin="VCC"/>
 </segment>
 </net>
 <net name="RADIODAT" class="0">
@@ -4250,6 +4251,9 @@ You are welcome to use this library for commercial purposes. For attribution, we
 </nets>
 </sheet>
 </sheets>
+<errors>
+<approved hash="104,1,96.52,119.38,U$2,+5V,VCC,,,"/>
+</errors>
 </schematic>
 </drawing>
 </eagle>
