@@ -146,7 +146,7 @@
 <dimension x1="14.605" y1="5.08" x2="33.655" y2="5.08" x3="24.13" y3="-3.81" textsize="1.778" textratio="15" layer="49"/>
 <text x="35.56" y="25.4" size="1.27" layer="22" font="vector" ratio="17" rot="MR0">2014 Liam Marshall</text>
 <text x="38.1" y="11.43" size="1.778" layer="21" font="vector" ratio="15">DAT</text>
-<text x="29.21" y="23.876" size="0.8128" layer="22" font="vector" ratio="23" rot="MR0">Reciever</text>
+<text x="32.131" y="23.622" size="1.27" layer="22" font="vector" ratio="23" rot="MR0">Reciever</text>
 <text x="22.987" y="23.749" size="0.8128" layer="16" font="vector" ratio="20" rot="MR0">v0.1</text>
 <text x="22.987" y="23.749" size="0.8128" layer="30" font="vector" ratio="20" rot="MR0">v0.1</text>
 </plain>
